@@ -1,0 +1,11 @@
+Paso 1 — instala Node.js (si no lo tienes)
+Descárgalo de nodejs.org, versión LTS. Es un instalador normal, siguiente-siguiente-finalizar.
+
+Paso 2 — instala la app
+# Descomprime el ZIP donde quieras (Escritorio, Documents, da igual)
+# Abre una terminal en esa carpeta y ejecuta:
+npm install
+Eso descarga Electron (~100MB, solo la primera vez, tarda un par de minutos).
+
+Paso 3 — ejecutar
+npm start

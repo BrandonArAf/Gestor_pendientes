@@ -1,0 +1,3 @@
+@echo off
+echo Iniciando Pendientes...
+npm start
