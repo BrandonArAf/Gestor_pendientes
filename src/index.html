@@ -376,45 +376,60 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
 .client-nav-item{display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:6px;cursor:pointer;color:var(--text2);font-size:12px;transition:all .15s}
 .client-nav-item:hover{background:var(--bg3);color:var(--text)}
 
-/* ── Light theme ── */
+/* ── Light theme — paleta parchment cálida ── */
 [data-theme="light"] {
-  --bg:#eeecf5; --bg2:#ffffff; --bg3:#f5f4fb; --bg4:#e6e4f0;
-  --border:rgba(0,0,0,0.08); --border2:rgba(0,0,0,0.15);
-  --text:#18172a; --text2:#514f6b; --text3:#9896b2;
-  --accent:#6c5ce7; --accent2:#5548d6;
-  --red:#dc2626; --red-bg:rgba(220,38,38,0.09); --red-border:rgba(220,38,38,0.22);
-  --amber:#c2720a; --amber-bg:rgba(194,114,10,0.09); --amber-border:rgba(194,114,10,0.22);
-  --green:#047857; --green-bg:rgba(4,120,87,0.09); --green-border:rgba(4,120,87,0.22);
-  --blue:#1d4ed8; --blue-bg:rgba(29,78,216,0.09); --blue-border:rgba(29,78,216,0.22);
-  --purple:#6d28d9; --purple-bg:rgba(109,40,217,0.09);
-  --llamada:#1d4ed8; --correo:#6d28d9; --whatsapp:#047857;
-  --instagram:#be185d; --seguimiento:#92400e;
+  --bg:  #e8e2d6;
+  --bg2: #f2ece0;
+  --bg3: #ddd7ca;
+  --bg4: #cfc9bb;
+  --border:  rgba(0,0,0,0.10);
+  --border2: rgba(0,0,0,0.18);
+  --text:  #201a10;
+  --text2: #5a5141;
+  --text3: #9e9080;
+  --accent: #6c5ce7; --accent2:#5548d6;
+  --red:#bf1c1c; --red-bg:rgba(191,28,28,0.11); --red-border:rgba(191,28,28,0.28);
+  --amber:#a85500; --amber-bg:rgba(168,85,0,0.11); --amber-border:rgba(168,85,0,0.28);
+  --green:#166534; --green-bg:rgba(22,101,52,0.11); --green-border:rgba(22,101,52,0.28);
+  --blue:#1e40af; --blue-bg:rgba(30,64,175,0.11); --blue-border:rgba(30,64,175,0.28);
+  --purple:#5b21b6; --purple-bg:rgba(91,33,182,0.11);
+  --llamada:#1e40af; --correo:#5b21b6; --whatsapp:#166534;
+  --instagram:#9d174d; --seguimiento:#78350f;
 }
 [data-theme="light"] body{color-scheme:light}
-[data-theme="light"] .titlebar{background:var(--bg)}
-[data-theme="light"] .task-card{box-shadow:0 1px 3px rgba(0,0,0,0.05)}
-[data-theme="light"] .task-card.urgent{background:rgba(220,38,38,.04)}
-[data-theme="light"] .kanban-card{box-shadow:0 1px 4px rgba(0,0,0,0.07)}
-[data-theme="light"] .drawer{box-shadow:-6px 0 24px rgba(0,0,0,0.1)}
-[data-theme="light"] .drawer-overlay{background:rgba(200,198,218,.55)}
-[data-theme="light"] .cmd-overlay{background:rgba(200,198,218,.65);backdrop-filter:blur(8px)}
-[data-theme="light"] .modal-overlay{background:rgba(200,198,218,.65);backdrop-filter:blur(8px)}
-[data-theme="light"] .cmd-box,[data-theme="light"] .modal-box{box-shadow:0 20px 60px rgba(0,0,0,0.15)}
-[data-theme="light"] .ch-llamada-bg{background:rgba(29,78,216,.1)}
-[data-theme="light"] .ch-correo-bg{background:rgba(109,40,217,.1)}
-[data-theme="light"] .ch-whatsapp-bg{background:rgba(4,120,87,.1)}
-[data-theme="light"] .ch-instagram-bg{background:rgba(190,24,93,.1)}
-[data-theme="light"] .ch-seguimiento-bg{background:rgba(146,64,14,.1)}
-[data-theme="light"] .ch-llamada-pill{background:rgba(29,78,216,.12);color:var(--llamada)}
-[data-theme="light"] .ch-correo-pill{background:rgba(109,40,217,.12);color:var(--correo)}
-[data-theme="light"] .ch-whatsapp-pill{background:rgba(4,120,87,.12);color:var(--whatsapp)}
-[data-theme="light"] .ch-instagram-pill{background:rgba(190,24,93,.12);color:var(--instagram)}
-[data-theme="light"] .ch-seguimiento-pill{background:rgba(146,64,14,.12);color:var(--seguimiento)}
-[data-theme="light"] .streak-badge{background:rgba(4,120,87,.09);border-color:rgba(4,120,87,.22)}
-[data-theme="light"] .contact-btn-wa{background:rgba(4,120,87,.1);color:#047857;border-color:rgba(4,120,87,.28)}
-[data-theme="light"] .contact-btn-tel{background:rgba(29,78,216,.1);color:#1d4ed8;border-color:rgba(29,78,216,.28)}
-[data-theme="light"] .contact-btn-email{background:rgba(109,40,217,.1);color:#6d28d9;border-color:rgba(109,40,217,.28)}
-[data-theme="light"] #toast-container .toast{box-shadow:0 4px 16px rgba(0,0,0,0.12)}
+[data-theme="light"] .titlebar{background:var(--bg);border-bottom-color:var(--border)}
+[data-theme="light"] .sidebar{background:var(--bg);border-right-color:var(--border)}
+[data-theme="light"] .task-card{background:var(--bg2);box-shadow:0 1px 4px rgba(0,0,0,0.07)}
+[data-theme="light"] .task-card:hover{background:#faf5ec}
+[data-theme="light"] .task-card.urgent{background:rgba(191,28,28,.06)}
+[data-theme="light"] .kanban-col{background:var(--bg3)}
+[data-theme="light"] .kanban-card{background:var(--bg2);box-shadow:0 1px 4px rgba(0,0,0,0.08)}
+[data-theme="light"] .kanban-card:hover{background:#faf5ec}
+[data-theme="light"] .drawer{background:var(--bg2);box-shadow:-6px 0 28px rgba(0,0,0,0.14)}
+[data-theme="light"] .drawer-overlay{background:rgba(180,172,158,.5)}
+[data-theme="light"] .cmd-overlay{background:rgba(180,172,158,.6);backdrop-filter:blur(8px)}
+[data-theme="light"] .modal-overlay{background:rgba(180,172,158,.6);backdrop-filter:blur(8px)}
+[data-theme="light"] .cmd-box{background:var(--bg2);box-shadow:0 20px 60px rgba(0,0,0,0.18)}
+[data-theme="light"] .modal-box{background:var(--bg2);box-shadow:0 20px 60px rgba(0,0,0,0.18)}
+[data-theme="light"] .add-form{background:var(--bg3)}
+[data-theme="light"] .kpi-card{background:var(--bg2);box-shadow:0 1px 4px rgba(0,0,0,0.07)}
+[data-theme="light"] .recent-item{background:var(--bg2)}
+[data-theme="light"] #toast-container .toast{background:var(--bg2);box-shadow:0 4px 18px rgba(0,0,0,0.14)}
+[data-theme="light"] .snooze-dd{background:var(--bg2)}
+[data-theme="light"] .ch-llamada-bg{background:rgba(30,64,175,.12)}
+[data-theme="light"] .ch-correo-bg{background:rgba(91,33,182,.12)}
+[data-theme="light"] .ch-whatsapp-bg{background:rgba(22,101,52,.12)}
+[data-theme="light"] .ch-instagram-bg{background:rgba(157,23,77,.12)}
+[data-theme="light"] .ch-seguimiento-bg{background:rgba(120,53,15,.12)}
+[data-theme="light"] .ch-llamada-pill{background:rgba(30,64,175,.13);color:var(--llamada)}
+[data-theme="light"] .ch-correo-pill{background:rgba(91,33,182,.13);color:var(--correo)}
+[data-theme="light"] .ch-whatsapp-pill{background:rgba(22,101,52,.13);color:var(--whatsapp)}
+[data-theme="light"] .ch-instagram-pill{background:rgba(157,23,77,.13);color:var(--instagram)}
+[data-theme="light"] .ch-seguimiento-pill{background:rgba(120,53,15,.13);color:var(--seguimiento)}
+[data-theme="light"] .streak-badge{background:rgba(22,101,52,.1);border-color:rgba(22,101,52,.25)}
+[data-theme="light"] .contact-btn-wa{background:rgba(22,101,52,.11);color:#166534;border-color:rgba(22,101,52,.3)}
+[data-theme="light"] .contact-btn-tel{background:rgba(30,64,175,.11);color:#1e40af;border-color:rgba(30,64,175,.3)}
+[data-theme="light"] .contact-btn-email{background:rgba(91,33,182,.11);color:#5b21b6;border-color:rgba(91,33,182,.3)}
 
 /* ── Theme toggle ── */
 .theme-btn{-webkit-app-region:no-drag;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:5px 7px;cursor:pointer;color:var(--text3);line-height:0;transition:all .15s}
