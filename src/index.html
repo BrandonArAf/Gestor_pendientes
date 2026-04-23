@@ -28,7 +28,7 @@ html,body{height:100%;overflow:hidden}
 body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
 
 /* ── Titlebar ── */
-.app{display:flex;flex-direction:column;height:100vh}
+.app{display:flex;flex-direction:column;height:100%}
 .titlebar{-webkit-app-region:drag;display:flex;align-items:center;justify-content:space-between;padding:12px 20px 12px 80px;background:var(--bg);border-bottom:1px solid var(--border);flex-shrink:0;user-select:none}
 .titlebar-title{font-size:13px;font-weight:500;color:var(--text2);letter-spacing:.08em;text-transform:uppercase}
 .titlebar-actions{-webkit-app-region:no-drag;display:flex;gap:6px;align-items:center}
@@ -42,7 +42,9 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
 
 /* ── Layout ── */
 .main{display:flex;flex:1;overflow:hidden}
-.sidebar{width:220px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;padding:20px 0;transition:transform .25s}
+.sidebar{width:220px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;padding:20px 0;transition:transform .25s;overflow-y:auto}
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:2px}
 .sidebar-section{padding:0 12px;margin-bottom:8px}
 .sidebar-label{font-size:10px;font-weight:500;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;padding:0 8px;margin-bottom:4px}
 .nav-item{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:var(--radius-sm);cursor:pointer;color:var(--text2);font-size:13px;transition:all .15s;border:1px solid transparent}
@@ -230,7 +232,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
 /* ── Drawer ── */
 .drawer-overlay{position:fixed;inset:0;top:52px;background:rgba(15,15,17,.5);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);z-index:199;opacity:0;pointer-events:none;transition:opacity .25s}
 .drawer-overlay.open{opacity:1;pointer-events:all}
-.drawer{position:fixed;top:52px;right:0;width:400px;height:calc(100vh - 52px);background:var(--bg2);border-left:1px solid var(--border2);z-index:200;transform:translateX(100%);transition:transform .25s cubic-bezier(.4,0,.2,1);overflow:hidden;display:flex;flex-direction:column}
+.drawer{position:fixed;top:52px;right:0;width:400px;height:calc(100% - 52px);background:var(--bg2);border-left:1px solid var(--border2);z-index:200;transform:translateX(100%);transition:transform .25s cubic-bezier(.4,0,.2,1);overflow:hidden;display:flex;flex-direction:column}
 .drawer.open{transform:translateX(0)}
 .drawer-header{padding:18px 20px 0;flex-shrink:0;border-bottom:1px solid var(--border);position:relative}
 .drawer-close{position:absolute;top:14px;right:14px;background:transparent;border:none;color:var(--text3);cursor:pointer;padding:4px;border-radius:4px;line-height:0;transition:all .15s}
@@ -374,9 +376,53 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
 .client-nav-item{display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:6px;cursor:pointer;color:var(--text2);font-size:12px;transition:all .15s}
 .client-nav-item:hover{background:var(--bg3);color:var(--text)}
 
+/* ── Light theme ── */
+[data-theme="light"] {
+  --bg:#eeecf5; --bg2:#ffffff; --bg3:#f5f4fb; --bg4:#e6e4f0;
+  --border:rgba(0,0,0,0.08); --border2:rgba(0,0,0,0.15);
+  --text:#18172a; --text2:#514f6b; --text3:#9896b2;
+  --accent:#6c5ce7; --accent2:#5548d6;
+  --red:#dc2626; --red-bg:rgba(220,38,38,0.09); --red-border:rgba(220,38,38,0.22);
+  --amber:#c2720a; --amber-bg:rgba(194,114,10,0.09); --amber-border:rgba(194,114,10,0.22);
+  --green:#047857; --green-bg:rgba(4,120,87,0.09); --green-border:rgba(4,120,87,0.22);
+  --blue:#1d4ed8; --blue-bg:rgba(29,78,216,0.09); --blue-border:rgba(29,78,216,0.22);
+  --purple:#6d28d9; --purple-bg:rgba(109,40,217,0.09);
+  --llamada:#1d4ed8; --correo:#6d28d9; --whatsapp:#047857;
+  --instagram:#be185d; --seguimiento:#92400e;
+}
+[data-theme="light"] body{color-scheme:light}
+[data-theme="light"] .titlebar{background:var(--bg)}
+[data-theme="light"] .task-card{box-shadow:0 1px 3px rgba(0,0,0,0.05)}
+[data-theme="light"] .task-card.urgent{background:rgba(220,38,38,.04)}
+[data-theme="light"] .kanban-card{box-shadow:0 1px 4px rgba(0,0,0,0.07)}
+[data-theme="light"] .drawer{box-shadow:-6px 0 24px rgba(0,0,0,0.1)}
+[data-theme="light"] .drawer-overlay{background:rgba(200,198,218,.55)}
+[data-theme="light"] .cmd-overlay{background:rgba(200,198,218,.65);backdrop-filter:blur(8px)}
+[data-theme="light"] .modal-overlay{background:rgba(200,198,218,.65);backdrop-filter:blur(8px)}
+[data-theme="light"] .cmd-box,[data-theme="light"] .modal-box{box-shadow:0 20px 60px rgba(0,0,0,0.15)}
+[data-theme="light"] .ch-llamada-bg{background:rgba(29,78,216,.1)}
+[data-theme="light"] .ch-correo-bg{background:rgba(109,40,217,.1)}
+[data-theme="light"] .ch-whatsapp-bg{background:rgba(4,120,87,.1)}
+[data-theme="light"] .ch-instagram-bg{background:rgba(190,24,93,.1)}
+[data-theme="light"] .ch-seguimiento-bg{background:rgba(146,64,14,.1)}
+[data-theme="light"] .ch-llamada-pill{background:rgba(29,78,216,.12);color:var(--llamada)}
+[data-theme="light"] .ch-correo-pill{background:rgba(109,40,217,.12);color:var(--correo)}
+[data-theme="light"] .ch-whatsapp-pill{background:rgba(4,120,87,.12);color:var(--whatsapp)}
+[data-theme="light"] .ch-instagram-pill{background:rgba(190,24,93,.12);color:var(--instagram)}
+[data-theme="light"] .ch-seguimiento-pill{background:rgba(146,64,14,.12);color:var(--seguimiento)}
+[data-theme="light"] .streak-badge{background:rgba(4,120,87,.09);border-color:rgba(4,120,87,.22)}
+[data-theme="light"] .contact-btn-wa{background:rgba(4,120,87,.1);color:#047857;border-color:rgba(4,120,87,.28)}
+[data-theme="light"] .contact-btn-tel{background:rgba(29,78,216,.1);color:#1d4ed8;border-color:rgba(29,78,216,.28)}
+[data-theme="light"] .contact-btn-email{background:rgba(109,40,217,.1);color:#6d28d9;border-color:rgba(109,40,217,.28)}
+[data-theme="light"] #toast-container .toast{box-shadow:0 4px 16px rgba(0,0,0,0.12)}
+
+/* ── Theme toggle ── */
+.theme-btn{-webkit-app-region:no-drag;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:5px 7px;cursor:pointer;color:var(--text3);line-height:0;transition:all .15s}
+.theme-btn:hover{background:var(--bg4);color:var(--text2)}
+
 /* ── Responsive ── */
 @media (max-width:680px){
-  .sidebar{position:fixed;top:52px;left:0;height:calc(100vh - 52px);z-index:150;transform:translateX(-100%)}
+  .sidebar{position:fixed;top:52px;left:0;height:calc(100% - 52px);z-index:150;transform:translateX(-100%)}
   .sidebar.mobile-open{transform:translateX(0)}
   .titlebar{padding-left:14px}
   .form-grid{grid-template-columns:1fr}
@@ -402,6 +448,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
         <span>Inicio auto</span>
         <div class="toggle-sw" id="autolaunch-toggle" onclick="toggleAutoLaunch()"></div>
       </label>
+      <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" title="Cambiar tema"></button>
       <button class="titlebar-btn" onclick="api.sendTestNotification()">Test notif</button>
       <button class="titlebar-btn" onclick="api.openDataFolder()">Carpeta datos</button>
       <button class="titlebar-btn" onclick="exportJSON()">Exportar</button>
@@ -455,18 +502,8 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
           <div class="nav-dot" style="background:var(--amber)"></div>En curso
           <span class="nav-count" id="cnt-encurso">0</span>
         </div>
-        <div class="nav-item" id="nav-pendientes" onclick="setFilter('pendientes')">
-          <div class="nav-dot" style="background:var(--text3)"></div>Pendientes
-          <span class="nav-count" id="cnt-pendientes">0</span>
-        </div>
-        <div class="nav-item" id="nav-bloqueadas" onclick="setFilter('bloqueadas')">
-          <div class="nav-dot" style="background:var(--blue)"></div>Bloqueadas
-          <span class="nav-count" id="cnt-bloqueadas">0</span>
-        </div>
-        <div class="nav-item" id="nav-en_espera" onclick="setFilter('en_espera')">
-          <div class="nav-dot" style="background:var(--purple)"></div>En espera
-          <span class="nav-count" id="cnt-en_espera">0</span>
-        </div>
+
+
         <div class="nav-item" id="nav-done" onclick="setFilter('done')">
           <div class="nav-dot" style="background:var(--green)"></div>Completadas
           <span class="nav-count" id="cnt-done">0</span>
@@ -586,10 +623,9 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
             <option value="">Estado</option>
             <option value="urgent">Vencida</option>
             <option value="warn">En curso</option>
-            <option value="ok">Pendiente</option>
+
             <option value="snoozed">Pospuesta</option>
-            <option value="bloqueada">Bloqueada</option>
-            <option value="en_espera">En espera</option>
+
             <option value="done">Completada</option>
           </select>
           <button class="filter-clear" onclick="clearFilters()">Limpiar</button>
@@ -1152,6 +1188,24 @@ async function toggleAutoLaunch() {
   showToast(result?'Inicio automático activado':'Inicio automático desactivado');
 }
 
+// ─── Theme ────────────────────────────────────────────────────────────────────
+const SUN_ICON  = `<svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="10" r="3.5"/><path d="M10 2v1.5M10 16.5V18M2 10h1.5M16.5 10H18M4.22 4.22l1.06 1.06M14.72 14.72l1.06 1.06M4.22 15.78l1.06-1.06M14.72 5.28l1.06-1.06"/></svg>`;
+const MOON_ICON = `<svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M17.5 12A7.5 7.5 0 018 2.5a7.5 7.5 0 100 15 7.5 7.5 0 009.5-5.5z"/></svg>`;
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+  const btn = document.getElementById('theme-btn');
+  if (btn) btn.innerHTML = theme === 'light' ? MOON_ICON : SUN_ICON;
+}
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme') || 'dark';
+  applyTheme(current === 'dark' ? 'light' : 'dark');
+}
+function initTheme() {
+  applyTheme(localStorage.getItem('theme') || 'dark');
+}
+
 // ─── Mobile sidebar ───────────────────────────────────────────────────────────
 function toggleMobileSidebar() {
   document.getElementById('sidebar').classList.toggle('mobile-open');
@@ -1319,7 +1373,6 @@ function loadDrawerActivity(t) {
   });
 }
 function buildDrawerEdit(t) {
-  const msOpts = ['','bloqueada','en_espera'].map(v=>`<option value="${v}"${(t.manualStatus||'')===v?' selected':''}>${v===''?'Auto (por tiempo)':v==='bloqueada'?'Bloqueada':'En espera'}</option>`).join('');
   return `
     <div class="drawer-header">
       <button class="drawer-close" onclick="closeDrawer()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
@@ -1342,7 +1395,6 @@ function buildDrawerEdit(t) {
           <div class="form-group"><label>Prioridad</label><select id="e-prio">${['alta','media','baja'].map(p=>`<option value="${p}"${t.prio===p?' selected':''}>${p}</option>`).join('')}</select></div>
           <div class="form-group"><label>Alertar en (h)</label><input id="e-alerta" type="number" value="${t.alerta}" min="0.5" max="48" step="0.5"></div>
         </div>
-        <div class="form-group"><label>Estado manual</label><select id="e-manualstatus">${msOpts}</select></div>
         <div class="form-group"><label>Descripción</label><textarea id="e-desc">${escHtml(t.desc)}</textarea></div>
         <div class="drawer-actions" style="margin-top:14px">
           <button class="d-btn d-btn-green" onclick="saveDrawerEdit(${t.id})">Guardar cambios</button>
@@ -1362,7 +1414,7 @@ function saveDrawerEdit(id) {
   t.correo  = document.getElementById('e-correo').value.trim();
   t.prio    = document.getElementById('e-prio').value;
   t.alerta  = parseFloat(document.getElementById('e-alerta').value)||t.alerta;
-  t.manualStatus = document.getElementById('e-manualstatus').value||null;
+  t.manualStatus = null;
   t.desc    = document.getElementById('e-desc').value.trim()||t.desc;
   t.notified=false; t.warnNotified=false; t.lastNotified=null;
   saveTasks(); switchDrawerMode('view'); render();
@@ -1598,6 +1650,7 @@ document.getElementById('modal-followup').addEventListener('click', e => { if (e
 // ─── Boot ─────────────────────────────────────────────────────────────────────
 api.onTasksRefresh(() => render());
 if (api.onQuickAdd) api.onQuickAdd(() => { showWindow(); toggleForm(); });
+initTheme();
 loadTasks();
 initAutoLaunch();
 setInterval(render, 60_000);
