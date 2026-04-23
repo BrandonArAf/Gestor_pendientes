@@ -208,26 +208,22 @@ function createWindow() {
 function setAutoLaunch(enabled) {
   const settings = {
     openAtLogin: enabled,
+    name: 'Pendientes',
     path: process.execPath,
     args: []
   };
-  
-  if (!app.isPackaged) {
-    settings.args.push(app.getAppPath());
-  }
+  if (!app.isPackaged) settings.args.push(app.getAppPath());
   settings.args.push('--hidden');
-  
   app.setLoginItemSettings(settings);
 }
 
 function getAutoLaunch() {
   const settings = {
+    name: 'Pendientes',
     path: process.execPath,
     args: []
   };
-  if (!app.isPackaged) {
-    settings.args.push(app.getAppPath());
-  }
+  if (!app.isPackaged) settings.args.push(app.getAppPath());
   settings.args.push('--hidden');
   return app.getLoginItemSettings(settings).openAtLogin;
 }
