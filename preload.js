@@ -11,6 +11,8 @@ contextBridge.exposeInMainWorld('api', {
   setAutoLaunch:         (enabled)  => ipcRenderer.invoke('set-auto-launch', enabled),
   getAutoLaunch:         ()         => ipcRenderer.invoke('get-auto-launch'),
   snoozeTask:            (id, hours) => ipcRenderer.invoke('snooze-task', id, hours),
+  readNotifLog:          (taskId)   => ipcRenderer.invoke('read-notif-log', taskId),
+  importTasks:           ()         => ipcRenderer.invoke('import-tasks'),
   onTasksRefresh:        (cb)       => ipcRenderer.on('tasks-refresh', cb),
   removeTasksRefresh:    (cb)       => ipcRenderer.removeListener('tasks-refresh', cb),
 });

@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Tray, Menu, nativeImage, Notification, ipcMain, shell } = require('electron');
+const { app, BrowserWindow, Tray, Menu, nativeImage, Notification, ipcMain, shell, dialog } = require('electron');
 const path = require('path');
 const fs = require('fs');
 
@@ -73,24 +73,38 @@ function checkNotifications(tasks) {
 
   tasks.forEach(task => {
     if (task.done) return;
-
-    // Respect snooze: if snoozed until future, skip
     if (task.snoozedUntil && now < task.snoozedUntil) return;
 
-    const elapsed = (now - task.creado) / 3600000;
+    const elapsed   = (now - task.creado) / 3600000;
+    const hoursLeft = task.alerta - elapsed;
 
-    if (elapsed >= task.alerta && !task.notified) {
+    // Pre-alerta: avisar 1 hora antes de vencer
+    if (!task.warnNotified && hoursLeft > 0 && hoursLeft <= 1) {
+      const minsLeft = Math.round(hoursLeft * 60);
       sendNotification(
-        `Tarea vencida — ${task.canal.toUpperCase()}`,
+        `Vence en ${minsLeft} min — ${task.canal}`,
         `${task.nombre}: ${task.desc.slice(0, 80)}${task.desc.length > 80 ? '…' : ''}`,
         task.id
       );
-      task.notified      = true;
-      task.lastNotified  = now;
-      changed            = true;
-    } else if (task.notified && (now - (task.lastNotified || 0)) >= 30 * 60 * 1000) {
+      task.warnNotified = true;
+      changed = true;
+    }
+
+    // Alerta: al vencer
+    if (elapsed >= task.alerta && !task.notified) {
       sendNotification(
-        `Recordatorio — ${Math.floor(elapsed)}h sin atender`,
+        `Vencida — ${task.canal.toUpperCase()}`,
+        `${task.nombre}: ${task.desc.slice(0, 80)}${task.desc.length > 80 ? '…' : ''}`,
+        task.id
+      );
+      task.notified     = true;
+      task.lastNotified = now;
+      changed           = true;
+    } else if (task.notified && (now - (task.lastNotified || 0)) >= 30 * 60 * 1000) {
+      const overdueH    = Math.floor(elapsed - task.alerta);
+      const overdueText = overdueH > 0 ? ` · ${overdueH}h sin atender` : '';
+      sendNotification(
+        `Recordatorio${overdueText} — ${task.canal}`,
         `${task.nombre}: ${task.desc.slice(0, 80)}`,
         task.id
       );
@@ -308,6 +322,28 @@ ipcMain.handle('set-auto-launch', (_, enabled) => {
 });
 
 ipcMain.handle('get-auto-launch', () => getAutoLaunch());
+
+ipcMain.handle('read-notif-log', (_, taskId) => {
+  try {
+    if (!fs.existsSync(NOTIF_LOG)) return [];
+    const log = JSON.parse(fs.readFileSync(NOTIF_LOG, 'utf8'));
+    return taskId ? log.filter(e => e.taskId === taskId) : log;
+  } catch (_) { return []; }
+});
+
+ipcMain.handle('import-tasks', async () => {
+  const { canceled, filePaths } = await dialog.showOpenDialog(mainWindow, {
+    title:      'Importar tareas',
+    filters:    [{ name: 'JSON', extensions: ['json'] }],
+    properties: ['openFile']
+  });
+  if (canceled || !filePaths.length) return null;
+  try {
+    const raw      = fs.readFileSync(filePaths[0], 'utf8');
+    const imported = JSON.parse(raw);
+    return Array.isArray(imported) ? imported : null;
+  } catch (_) { return null; }
+});
 
 // ─── Quit ─────────────────────────────────────────────────────────────────────
 app.on('before-quit',        () => { app.isQuitting = true; });
