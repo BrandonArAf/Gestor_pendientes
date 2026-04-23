@@ -308,6 +308,72 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
 .cmd-item-sub{font-size:11px;color:var(--text3);font-family:var(--font-mono)}
 .cmd-hint{padding:8px 16px;border-top:1px solid var(--border);font-size:11px;color:var(--text3);font-family:var(--font-mono)}
 
+/* ── Contact action buttons ── */
+.contact-actions{display:flex;gap:5px;margin-bottom:8px;flex-wrap:wrap}
+.contact-btn{display:inline-flex;align-items:center;gap:4px;font-size:11px;padding:3px 9px;border-radius:6px;border:1px solid;cursor:pointer;font-family:var(--font-body);transition:all .15s;text-decoration:none;white-space:nowrap}
+.contact-btn-wa{background:rgba(52,211,153,.12);color:#34d399;border-color:rgba(52,211,153,.3)}
+.contact-btn-wa:hover{background:rgba(52,211,153,.22)}
+.contact-btn-tel{background:rgba(96,165,250,.12);color:#60a5fa;border-color:rgba(96,165,250,.3)}
+.contact-btn-tel:hover{background:rgba(96,165,250,.22)}
+.contact-btn-email{background:rgba(167,139,250,.12);color:#a78bfa;border-color:rgba(167,139,250,.3)}
+.contact-btn-email:hover{background:rgba(167,139,250,.22)}
+.contact-btn-copy{background:var(--bg4);color:var(--text3);border-color:var(--border)}
+.contact-btn-copy:hover{color:var(--text2);background:var(--bg3)}
+
+/* ── Urgency progress bar ── */
+.urgency-bar-wrap{height:2px;background:var(--bg4);border-radius:2px;margin:5px 0 8px;overflow:hidden}
+.urgency-bar{height:100%;border-radius:2px;transition:width .5s}
+
+/* ── Speed indicator ── */
+.speed-badge{font-size:10px;padding:2px 7px;border-radius:20px;font-family:var(--font-mono);font-weight:500}
+.speed-fast{background:var(--green-bg);color:var(--green)}
+.speed-ok{background:var(--amber-bg);color:var(--amber)}
+.speed-slow{background:var(--red-bg);color:var(--red)}
+
+/* ── Follow-up modal ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(15,15,17,.75);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:600;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .15s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal-box{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--radius);padding:24px;width:380px;max-width:90vw;box-shadow:0 24px 60px rgba(0,0,0,.6);animation:fadeIn .15s ease}
+.modal-icon{width:40px;height:40px;border-radius:10px;background:var(--green-bg);border:1px solid var(--green-border);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.modal-title{font-size:15px;font-weight:500;color:var(--text);margin-bottom:5px}
+.modal-sub{font-size:13px;color:var(--text2);margin-bottom:18px;line-height:1.5}
+.modal-opts{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.modal-opt{font-size:12px;padding:6px 14px;border-radius:6px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);cursor:pointer;font-family:var(--font-body);transition:all .15s}
+.modal-opt:hover{background:var(--accent);color:white;border-color:var(--accent)}
+.modal-dismiss{font-size:12px;color:var(--text3);background:transparent;border:none;cursor:pointer;display:block;width:100%;text-align:center;padding:6px 0;transition:color .15s}
+.modal-dismiss:hover{color:var(--text2)}
+
+/* ── Stats / Métricas view ── */
+.stats-view{flex:1;overflow-y:auto;padding:16px 24px 40px}
+.stats-view::-webkit-scrollbar{width:4px}
+.stats-view::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:2px}
+.stats-kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.kpi-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px}
+.kpi-card-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;font-weight:500;margin-bottom:8px}
+.kpi-card-value{font-size:30px;font-weight:500;font-family:var(--font-mono);color:var(--text);line-height:1}
+.kpi-card-sub{font-size:11px;color:var(--text3);margin-top:5px}
+.kpi-good{border-color:var(--green-border)}.kpi-good .kpi-card-value{color:var(--green)}
+.kpi-warn{border-color:var(--amber-border)}.kpi-warn .kpi-card-value{color:var(--amber)}
+.kpi-bad{border-color:var(--red-border)}.kpi-bad .kpi-card-value{color:var(--red)}
+.stats-section{margin-bottom:24px}
+.stats-section-title{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;font-weight:500;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.stats-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.canal-stat-row{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.canal-stat-label{width:110px;font-size:12px;color:var(--text2);display:flex;align-items:center;gap:6px;flex-shrink:0}
+.canal-bar-bg{flex:1;height:6px;background:var(--bg4);border-radius:3px;overflow:hidden}
+.canal-bar-fill{height:100%;border-radius:3px;transition:width .6s cubic-bezier(.4,0,.2,1)}
+.canal-stat-val{width:36px;text-align:right;font-size:11px;font-family:var(--font-mono);color:var(--text3)}
+.recent-completions{display:flex;flex-direction:column;gap:6px}
+.recent-item{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 12px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:border-color .15s}
+.recent-item:hover{border-color:var(--border2)}
+.recent-item-info{flex:1;min-width:0}
+.recent-item-name{font-size:13px;font-weight:500;color:var(--text)}
+.recent-item-sub{font-size:11px;color:var(--text3);margin-top:1px}
+
+/* ── Client sidebar ── */
+.client-nav-item{display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:6px;cursor:pointer;color:var(--text2);font-size:12px;transition:all .15s}
+.client-nav-item:hover{background:var(--bg3);color:var(--text)}
+
 /* ── Responsive ── */
 @media (max-width:680px){
   .sidebar{position:fixed;top:52px;left:0;height:calc(100vh - 52px);z-index:150;transform:translateX(-100%)}
@@ -407,6 +473,13 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
         </div>
       </div>
 
+      <div class="sidebar-divider"></div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Clientes activos</div>
+        <div id="client-list"></div>
+      </div>
+
       <div class="sidebar-stats">
         <div class="mini-stat"><span>Vencidas</span><span id="stat-urgent" style="color:var(--red)">0</span></div>
         <div class="mini-stat"><span>Creadas hoy</span><span id="stat-today">0</span></div>
@@ -487,6 +560,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
             <button class="view-tab active" id="tab-lista" onclick="setView('lista')">Lista</button>
             <button class="view-tab" id="tab-kanban" onclick="setView('kanban')">Kanban</button>
             <button class="view-tab" id="tab-calendario" onclick="setView('calendario')">Calendario</button>
+            <button class="view-tab" id="tab-metricas" onclick="setView('metricas')">Métricas</button>
           </div>
           <input type="date" id="filter-date" class="search-box date-input" onchange="render()">
           <input class="search-box search-main" id="search-box" type="text" placeholder="Buscar… (Ctrl+F)" oninput="render()">
@@ -524,8 +598,9 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
       </div>
 
       <div class="tasks-scroll" id="view-lista"></div>
-      <div class="kanban-view"  id="view-kanban" style="display:none"></div>
+      <div class="kanban-view"  id="view-kanban"     style="display:none"></div>
       <div class="cal-view"     id="view-calendario" style="display:none"></div>
+      <div class="stats-view"   id="view-metricas"   style="display:none"></div>
     </div>
   </div>
 </div>
@@ -533,6 +608,24 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
 <!-- Drawer -->
 <div class="drawer-overlay" id="drawer-overlay" onclick="closeDrawer()"></div>
 <div class="drawer" id="task-drawer"><div id="drawer-inner"></div></div>
+
+<!-- Follow-up modal -->
+<div class="modal-overlay" id="modal-followup">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <div class="modal-icon">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="var(--green)" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="10" r="8"/><path d="M10 6v4l2.5 2.5"/></svg>
+    </div>
+    <div class="modal-title">¿Hacer seguimiento?</div>
+    <div class="modal-sub">Tarea completada para <strong id="followup-nombre"></strong>. ¿Querés crear un recordatorio de seguimiento?</div>
+    <div class="modal-opts">
+      <button class="modal-opt" onclick="createFollowup(1)">Mañana</button>
+      <button class="modal-opt" onclick="createFollowup(3)">En 3 días</button>
+      <button class="modal-opt" onclick="createFollowup(7)">En 1 semana</button>
+      <button class="modal-opt" onclick="createFollowup(14)">En 2 semanas</button>
+    </div>
+    <button class="modal-dismiss" onclick="closeFollowupModal()">No, gracias</button>
+  </div>
+</div>
 
 <!-- Toast container -->
 <div id="toast-container"></div>
@@ -621,6 +714,71 @@ function formatRemaining(t) {
   const d = Math.floor(h/24); return `${d} día${d!==1?'s':''}`;
 }
 function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function formatDuration(ms) {
+  const m = Math.round(ms/60000);
+  if (m < 60) return `${m}m`;
+  const h = Math.floor(m/60), rm = m%60;
+  if (h < 24) return rm ? `${h}h ${rm}m` : `${h}h`;
+  return `${Math.floor(h/24)}d`;
+}
+
+// ─── Urgency progress bar ─────────────────────────────────────────────────────
+function urgencyBarHtml(t) {
+  if (t.done || ['bloqueada','en_espera','snoozed'].includes(getStatus(t))) return '';
+  const pct = Math.min(100, ((Date.now()-t.creado)/(t.alerta*3600000))*100);
+  const color = pct>=100?'var(--red)':pct>=60?'var(--amber)':'var(--green)';
+  return `<div class="urgency-bar-wrap"><div class="urgency-bar" style="width:${pct.toFixed(1)}%;background:${color}"></div></div>`;
+}
+
+// ─── Contact action buttons ───────────────────────────────────────────────────
+function contactActionsHtml(t) {
+  const btns = [];
+  if (t.celular) {
+    const num = t.celular.replace(/\D/g,'');
+    if (['whatsapp','seguimiento'].includes(t.canal)) {
+      btns.push(`<a class="contact-btn contact-btn-wa" href="https://wa.me/${num}" onclick="event.stopPropagation()">${CH_ICONS_SM.whatsapp} WhatsApp</a>`);
+    }
+    btns.push(`<a class="contact-btn contact-btn-tel" href="tel:${escHtml(t.celular)}" onclick="event.stopPropagation()"><svg width="11" height="11" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6.5 3.5c.5 1.5 1 3 2 4l-1.5 1.5c1 2 2.5 3.5 4.5 4.5l1.5-1.5c1 1 2.5 1.5 4 2v3c0 .5-.5 1-1 1C7 18 2 13 2 6.5c0-.5.5-1 1-1h3z"/></svg> Llamar</a>`);
+    btns.push(`<button class="contact-btn contact-btn-copy" onclick="copyText('${escHtml(t.celular)}',event)" title="Copiar número"><svg width="11" height="11" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="7" y="7" width="10" height="11" rx="2"/><path d="M13 7V5a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2h2"/></svg></button>`);
+  }
+  if (t.correo) {
+    btns.push(`<a class="contact-btn contact-btn-email" href="mailto:${escHtml(t.correo)}" onclick="event.stopPropagation()">${CH_ICONS_SM.correo} Email</a>`);
+    btns.push(`<button class="contact-btn contact-btn-copy" onclick="copyText('${escHtml(t.correo)}',event)" title="Copiar correo"><svg width="11" height="11" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="7" y="7" width="10" height="11" rx="2"/><path d="M13 7V5a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2h2"/></svg></button>`);
+  }
+  if (!btns.length) return '';
+  return `<div class="contact-actions">${btns.join('')}</div>`;
+}
+
+function copyText(text, e) {
+  if (e) e.stopPropagation();
+  navigator.clipboard.writeText(text).then(()=>showToast('Copiado al portapapeles','success'));
+}
+
+// ─── Follow-up modal ──────────────────────────────────────────────────────────
+let pendingFollowupId = null;
+function maybeOfferFollowup(t) {
+  if (!t.celular && !t.correo) return;
+  if (t.canal === 'seguimiento') return;
+  pendingFollowupId = t.id;
+  document.getElementById('followup-nombre').textContent = t.nombre;
+  document.getElementById('modal-followup').classList.add('open');
+}
+function createFollowup(days) {
+  closeFollowupModal();
+  const orig = tasks.find(x=>x.id===pendingFollowupId); if (!orig) return;
+  tasks.unshift({
+    id: Date.now(), canal:'seguimiento', nombre:orig.nombre,
+    celular:orig.celular||'', correo:orig.correo||'',
+    desc:`Seguimiento — ${orig.desc.slice(0,80)}`,
+    prio:'media', alerta:days*24, creado:Date.now(), done:false
+  });
+  saveTasks(); render();
+  showToast(`Seguimiento creado para ${orig.nombre} en ${days} día${days>1?'s':''}`, 'success');
+}
+function closeFollowupModal() {
+  document.getElementById('modal-followup').classList.remove('open');
+  pendingFollowupId = null;
+}
 
 // ─── Streak ───────────────────────────────────────────────────────────────────
 function calcStreak() {
@@ -631,6 +789,124 @@ function calcStreak() {
     streak++; day.setDate(day.getDate()-1);
   }
   return streak;
+}
+
+// ─── Stats / Métricas ─────────────────────────────────────────────────────────
+function renderStats() {
+  const el = document.getElementById('view-metricas'); if (!el) return;
+  const now = Date.now();
+  const todayStart = new Date(); todayStart.setHours(0,0,0,0);
+  const weekAgo = now - 7*86400000;
+  const completed = tasks.filter(t=>t.done&&t.donedAt);
+  const completedToday = completed.filter(t=>t.donedAt>=todayStart.getTime());
+  const completedWeek = completed.filter(t=>t.donedAt>=weekAgo);
+  const pending = tasks.filter(t=>!t.done);
+  const urgent = pending.filter(t=>getStatus(t)==='urgent');
+  const withRt = completed.filter(t=>t.responseTime);
+  const avgRt = withRt.length ? withRt.reduce((s,t)=>s+t.responseTime,0)/withRt.length : 0;
+  const canales = ['llamada','correo','whatsapp','instagram','seguimiento'];
+  const maxPend = Math.max(1,...canales.map(c=>pending.filter(t=>t.canal===c).length));
+  const maxAvgRt = Math.max(1,...canales.map(c=>{ const r=withRt.filter(t=>t.canal===c); return r.length?r.reduce((s,t)=>s+t.responseTime,0)/r.length:0; }));
+  const recent = [...completed].sort((a,b)=>b.donedAt-a.donedAt).slice(0,10);
+
+  el.innerHTML = `
+    <div class="stats-kpi-grid">
+      <div class="kpi-card${completedToday.length>0?' kpi-good':''}">
+        <div class="kpi-card-label">Completadas hoy</div>
+        <div class="kpi-card-value">${completedToday.length}</div>
+        <div class="kpi-card-sub">${completedWeek.length} esta semana</div>
+      </div>
+      <div class="kpi-card${urgent.length>0?' kpi-bad':' kpi-good'}">
+        <div class="kpi-card-label">Vencidas ahora</div>
+        <div class="kpi-card-value">${urgent.length}</div>
+        <div class="kpi-card-sub">${pending.length} pendientes total</div>
+      </div>
+      <div class="kpi-card${avgRt&&avgRt<3600000?' kpi-good':avgRt>7200000?' kpi-warn':''}">
+        <div class="kpi-card-label">Tiempo prom. respuesta</div>
+        <div class="kpi-card-value" style="font-size:22px">${avgRt?formatDuration(avgRt):'—'}</div>
+        <div class="kpi-card-sub">${withRt.length} tareas con datos</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-card-label">Tasa resolución</div>
+        <div class="kpi-card-value" style="font-size:22px">${tasks.length?Math.round(completed.length/tasks.length*100):0}%</div>
+        <div class="kpi-card-sub">${completed.length} de ${tasks.length} totales</div>
+      </div>
+    </div>
+
+    <div class="stats-section">
+      <div class="stats-section-title">Pendientes por canal</div>
+      ${canales.map(c=>{
+        const cnt=pending.filter(t=>t.canal===c).length;
+        const urg=pending.filter(t=>t.canal===c&&getStatus(t)==='urgent').length;
+        const pct=Math.round(cnt/maxPend*100);
+        return `<div class="canal-stat-row">
+          <span class="canal-stat-label">${CH_ICONS_SM[c]} ${c}</span>
+          <div class="canal-bar-bg"><div class="canal-bar-fill" style="width:${pct}%;background:var(--${c})"></div></div>
+          <span class="canal-stat-val">${cnt}${urg>0?` <span style="color:var(--red)">!</span>`:''}</span>
+        </div>`;
+      }).join('')}
+    </div>
+
+    ${withRt.length ? `
+    <div class="stats-section">
+      <div class="stats-section-title">Tiempo de respuesta por canal</div>
+      ${canales.map(c=>{
+        const r=withRt.filter(t=>t.canal===c);
+        if(!r.length) return '';
+        const avg=r.reduce((s,t)=>s+t.responseTime,0)/r.length;
+        const pct=Math.round(avg/maxAvgRt*100);
+        return `<div class="canal-stat-row">
+          <span class="canal-stat-label">${CH_ICONS_SM[c]} ${c}</span>
+          <div class="canal-bar-bg"><div class="canal-bar-fill" style="width:${pct}%;background:var(--${c})"></div></div>
+          <span class="canal-stat-val">${formatDuration(avg)}</span>
+        </div>`;
+      }).filter(Boolean).join('')}
+    </div>` : ''}
+
+    ${recent.length ? `
+    <div class="stats-section">
+      <div class="stats-section-title">Completadas recientemente</div>
+      <div class="recent-completions">
+        ${recent.map(t=>{
+          const rt = t.responseTime;
+          const speedCls = rt ? (rt<1800000?'speed-fast':rt<t.alerta*3600000?'speed-ok':'speed-slow') : '';
+          const speedLabel = rt ? formatDuration(rt) : '';
+          return `<div class="recent-item" onclick="openDrawer(${t.id})">
+            <div class="ch-badge ch-${t.canal}-bg" style="width:28px;height:28px;border-radius:7px;flex-shrink:0">${CH_ICONS_SM[t.canal]}</div>
+            <div class="recent-item-info">
+              <div class="recent-item-name">${escHtml(t.nombre)}</div>
+              <div class="recent-item-sub">${formatTs(t.donedAt)}</div>
+            </div>
+            ${speedLabel?`<span class="speed-badge ${speedCls}">${speedLabel}</span>`:''}
+          </div>`;
+        }).join('')}
+      </div>
+    </div>` : '<div style="color:var(--text3);font-size:13px;padding:20px 0">Sin tareas completadas aún</div>'}`;
+}
+
+// ─── Client list ──────────────────────────────────────────────────────────────
+function updateClientList() {
+  const el = document.getElementById('client-list'); if (!el) return;
+  const pending = tasks.filter(t=>!t.done);
+  const map = {};
+  pending.forEach(t=>{
+    const k = t.nombre||'Sin nombre';
+    if (!map[k]) map[k]={nombre:k,canal:t.canal,count:0,urgent:0};
+    map[k].count++;
+    if (getStatus(t)==='urgent') map[k].urgent++;
+  });
+  const clients = Object.values(map).sort((a,b)=>b.urgent-a.urgent||b.count-a.count).slice(0,7);
+  if (!clients.length) { el.innerHTML='<div style="font-size:12px;color:var(--text3);padding:3px 10px">Sin pendientes</div>'; return; }
+  el.innerHTML = clients.map(c=>`
+    <div class="client-nav-item" onclick="filterByClient('${escHtml(c.nombre).replace(/'/g,"\\'")}')">
+      <div class="nav-dot" style="background:var(--${c.canal})"></div>
+      <span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px">${escHtml(c.nombre)}</span>
+      <span class="nav-count" style="${c.urgent>0?'background:var(--red-bg);color:var(--red)':''}">${c.urgent>0?c.urgent:c.count}</span>
+    </div>`).join('');
+}
+function filterByClient(nombre) {
+  document.getElementById('search-box').value = nombre;
+  setView('lista'); render();
 }
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -689,12 +965,18 @@ function markDone(id) {
   const card = document.getElementById(`card-${id}`);
   if (card && !t.done) {
     card.classList.add('completing');
-    setTimeout(()=>{ t.done=true; t.donedAt=Date.now(); saveTasks(); render(); showToast(`✓ ${t.nombre} completada`,'success'); },280);
+    setTimeout(()=>{
+      t.done=true; t.donedAt=Date.now(); t.responseTime=t.donedAt-t.creado;
+      saveTasks(); render();
+      showToast(`✓ ${t.nombre} — ${formatDuration(t.responseTime)}`,'success');
+      maybeOfferFollowup(t);
+    },280);
   } else {
     const wasOpen = drawerTaskId === id;
     t.done=!t.done; t.donedAt=t.done?Date.now():null;
+    if (t.done) t.responseTime=t.donedAt-t.creado;
     saveTasks(); render();
-    if (t.done) showToast(`✓ ${t.nombre} completada`,'success');
+    if (t.done) { showToast(`✓ ${t.nombre} — ${formatDuration(t.responseTime)}`,'success'); maybeOfferFollowup(t); }
     else showToast('Tarea reabierta');
     if (wasOpen) renderDrawer();
   }
@@ -824,7 +1106,7 @@ function updateFilterBarState() {
 // ─── View switching ───────────────────────────────────────────────────────────
 function setView(v) {
   currentView = v;
-  ['lista','kanban','calendario'].forEach(n=>{
+  ['lista','kanban','calendario','metricas'].forEach(n=>{
     document.getElementById('tab-'+n)?.classList.toggle('active',n===v);
     const el = document.getElementById('view-'+n);
     if (el) el.style.display = n===v ? (n==='kanban'?'flex':'') : 'none';
@@ -1004,10 +1286,12 @@ function buildDrawerDetalles(t, st) {
     <button class="snooze-opt" onclick="snoozeTask(${t.id},24)">Mañana</button>
   </div>` : '';
   return `
+    ${contactActionsHtml(t)}
     <div class="drawer-field"><span class="drawer-field-label">Canal</span><span class="drawer-field-value"><span class="ch-pill ch-${t.canal}-pill">${t.canal}</span></span></div>
     <div class="drawer-field"><span class="drawer-field-label">Contacto / Cliente</span><span class="drawer-field-value">${escHtml(t.nombre)}</span></div>
-    <div class="drawer-field"><span class="drawer-field-label">Celular</span><span class="drawer-field-value">${t.celular?escHtml(t.celular):'<span style="color:var(--text3)">—</span>'}</span></div>
-    <div class="drawer-field"><span class="drawer-field-label">Correo</span><span class="drawer-field-value">${t.correo?escHtml(t.correo):'<span style="color:var(--text3)">—</span>'}</span></div>
+    <div class="drawer-field"><span class="drawer-field-label">Celular</span><span class="drawer-field-value">${t.celular?`<span style="cursor:pointer" onclick="copyText('${escHtml(t.celular)}')">${escHtml(t.celular)}</span>`:'<span style="color:var(--text3)">—</span>'}</span></div>
+    <div class="drawer-field"><span class="drawer-field-label">Correo</span><span class="drawer-field-value">${t.correo?`<span style="cursor:pointer" onclick="copyText('${escHtml(t.correo)}')">${escHtml(t.correo)}</span>`:'<span style="color:var(--text3)">—</span>'}</span></div>
+    ${t.responseTime?`<div class="drawer-field"><span class="drawer-field-label">Tiempo respuesta</span><span class="drawer-field-value"><span class="speed-badge ${t.responseTime<1800000?'speed-fast':t.responseTime<t.alerta*3600000?'speed-ok':'speed-slow'}">${formatDuration(t.responseTime)}</span></span></div>`:''}
     <div class="drawer-field"><span class="drawer-field-label">Prioridad</span><span class="drawer-field-value"><span class="prio-pill prio-${t.prio}">${t.prio}</span></span></div>
     <div class="drawer-field"><span class="drawer-field-label">Alertar en</span><span class="drawer-field-value" style="font-family:var(--font-mono);font-size:12px">${remaining}</span></div>
     <div class="drawer-field"><span class="drawer-field-label">Creada</span><span class="drawer-field-value" style="font-family:var(--font-mono);font-size:12px">${formatTs(t.creado)}</span></div>
@@ -1125,6 +1409,8 @@ function renderLista(filtered) {
             ${snoozeInfo}
             <span class="task-time ${st==='urgent'?'urgent':st==='warn'?'warn':''}">${age}</span>
           </div>
+          ${urgencyBarHtml(t)}
+          ${contactActionsHtml(t)}
           <div class="task-desc">${escHtml(t.desc.slice(0,110))}${t.desc.length>110?'…':''}</div>
           <div class="task-actions">
             <button class="task-action" onclick="openDrawer(${t.id})">Abrir</button>
@@ -1178,6 +1464,7 @@ function renderKanban() {
                   <span class="kanban-card-name">${escHtml(t.nombre)}</span>
                   <span class="prio-pill prio-${t.prio}">${t.prio}</span>
                 </div>
+                ${urgencyBarHtml(t)}
                 <div class="kanban-card-desc">${escHtml(t.desc.slice(0,75))}${t.desc.length>75?'…':''}</div>
                 <div class="kanban-card-footer">
                   <span style="font-family:var(--font-mono);font-size:11px;color:var(--text3)">${formatAge(t.creado)}</span>
@@ -1269,6 +1556,7 @@ function updateSidebar() {
   const streak=calcStreak(), sb=document.getElementById('streak-badge');
   if(streak>=2){sb.style.display='flex';document.getElementById('streak-text').textContent=`${streak} días sin urgentes`;}
   else sb.style.display='none';
+  updateClientList();
 
   const alertEl=document.getElementById('urgent-alert');
   if(cnt.vencidas>0){
@@ -1284,6 +1572,7 @@ function render() {
   const filtered = getFilteredTasks();
   if      (currentView==='lista')      renderLista(filtered);
   else if (currentView==='kanban')     renderKanban();
+  else if (currentView==='metricas')   renderStats();
   else                                 renderCalendario();
 }
 
@@ -1297,13 +1586,18 @@ document.addEventListener('keydown', e => {
   if ((e.metaKey||e.ctrlKey)&&e.key==='1') { e.preventDefault(); setView('lista'); }
   if ((e.metaKey||e.ctrlKey)&&e.key==='2') { e.preventDefault(); setView('kanban'); }
   if ((e.metaKey||e.ctrlKey)&&e.key==='3') { e.preventDefault(); setView('calendario'); }
+  if ((e.metaKey||e.ctrlKey)&&e.key==='4') { e.preventDefault(); setView('metricas'); }
 });
 
 // Close snooze dropdowns on outside click
 document.addEventListener('click', () => document.querySelectorAll('.snooze-dd').forEach(el=>el.style.display='none'));
 
+// Close follow-up modal on overlay click
+document.getElementById('modal-followup').addEventListener('click', e => { if (e.target===e.currentTarget) closeFollowupModal(); });
+
 // ─── Boot ─────────────────────────────────────────────────────────────────────
 api.onTasksRefresh(() => render());
+if (api.onQuickAdd) api.onQuickAdd(() => { showWindow(); toggleForm(); });
 loadTasks();
 initAutoLaunch();
 setInterval(render, 60_000);

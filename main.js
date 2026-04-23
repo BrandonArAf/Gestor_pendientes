@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Tray, Menu, nativeImage, Notification, ipcMain, shell, dialog } = require('electron');
+const { app, BrowserWindow, Tray, Menu, nativeImage, Notification, ipcMain, shell, dialog, globalShortcut } = require('electron');
 const path = require('path');
 const fs = require('fs');
 
@@ -67,6 +67,11 @@ function sendNotification(title, body, taskId) {
   appendNotifLog({ ts: Date.now(), title, body, taskId: taskId || null });
 }
 
+function isBusinessHours() {
+  const h = new Date().getHours();
+  return h >= 8 && h < 21;
+}
+
 function checkNotifications(tasks) {
   const now = Date.now();
   let changed = false;
@@ -74,6 +79,7 @@ function checkNotifications(tasks) {
   tasks.forEach(task => {
     if (task.done) return;
     if (task.snoozedUntil && now < task.snoozedUntil) return;
+    if (!isBusinessHours()) return;
 
     const elapsed   = (now - task.creado) / 3600000;
     const hoursLeft = task.alerta - elapsed;
@@ -206,7 +212,10 @@ function createWindow() {
   });
 
   mainWindow.loadFile(path.join(__dirname, 'src', 'index.html'));
-  mainWindow.once('ready-to-show', () => mainWindow.show());
+  mainWindow.once('ready-to-show', () => {
+    mainWindow.maximize();
+    mainWindow.show();
+  });
 
   mainWindow.on('close', e => {
     if (!app.isQuitting) {
@@ -270,6 +279,13 @@ if (!gotTheLock) {
   } catch (e) {
     console.warn('[Tray] No disponible, abriendo ventana directamente:', e.message);
   }
+
+  globalShortcut.register('CommandOrControl+Shift+P', () => {
+    showWindow();
+    if (mainWindow?.webContents && !mainWindow.webContents.isDestroyed()) {
+      mainWindow.webContents.send('open-quick-add');
+    }
+  });
 
   if (!startHidden) createWindow();
 
@@ -346,5 +362,5 @@ ipcMain.handle('import-tasks', async () => {
 });
 
 // ─── Quit ─────────────────────────────────────────────────────────────────────
-app.on('before-quit',        () => { app.isQuitting = true; });
+app.on('before-quit',        () => { app.isQuitting = true; globalShortcut.unregisterAll(); });
 app.on('window-all-closed',  () => { if (process.platform !== 'darwin') app.quit(); });

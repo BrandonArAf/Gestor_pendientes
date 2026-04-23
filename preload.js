@@ -15,4 +15,6 @@ contextBridge.exposeInMainWorld('api', {
   importTasks:           ()         => ipcRenderer.invoke('import-tasks'),
   onTasksRefresh:        (cb)       => ipcRenderer.on('tasks-refresh', cb),
   removeTasksRefresh:    (cb)       => ipcRenderer.removeListener('tasks-refresh', cb),
+  onQuickAdd:            (cb)       => ipcRenderer.on('open-quick-add', cb),
+  removeQuickAdd:        (cb)       => ipcRenderer.removeListener('open-quick-add', cb),
 });
